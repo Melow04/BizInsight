@@ -203,6 +203,10 @@ export default function DashboardPage() {
                   <stop offset="5%" stopColor="#6366f1" stopOpacity={0.3} />
                   <stop offset="95%" stopColor="#6366f1" stopOpacity={0} />
                 </linearGradient>
+                <linearGradient id="gradExpenses" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="5%" stopColor="#ef4444" stopOpacity={0.3} />
+                  <stop offset="95%" stopColor="#ef4444" stopOpacity={0} />
+                </linearGradient>
                 <linearGradient id="gradProfit" x1="0" y1="0" x2="0" y2="1">
                   <stop offset="5%" stopColor="#10b981" stopOpacity={0.3} />
                   <stop offset="95%" stopColor="#10b981" stopOpacity={0} />
@@ -213,6 +217,7 @@ export default function DashboardPage() {
               <YAxis tick={{ fill: '#64748b', fontSize: 12 }} axisLine={false} tickLine={false} tickFormatter={fmt} />
               <Tooltip content={<CustomTooltip />} />
               <Area type="monotone" dataKey="revenue" name="Revenue" stroke="#6366f1" fill="url(#gradRevenue)" strokeWidth={2} dot={false} />
+              <Area type="monotone" dataKey="expenses" name="Expenses" stroke="#ef4444" fill="url(#gradExpenses)" strokeWidth={2} dot={false} />
               <Area type="monotone" dataKey="profit" name="Net Profit" stroke="#10b981" fill="url(#gradProfit)" strokeWidth={2} dot={false} />
             </AreaChart>
           </ResponsiveContainer>
