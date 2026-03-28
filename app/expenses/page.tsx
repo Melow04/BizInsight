@@ -97,20 +97,20 @@ export default function ExpensesPage() {
   })).sort((a, b) => b.total - a.total);
 
   return (
-    <div style={{ padding: '36px 40px', maxWidth: '1300px', width: '100%' }}>
+    <div className="p-[20px] md:p-[36px_40px] max-w-[1300px] w-full mx-auto">
       {/* Header */}
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '32px' }}>
+      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-[16px] mb-[32px]">
         <div className="page-header" style={{ margin: 0 }}>
           <h1 className="page-title">Expenses</h1>
           <p className="page-subtitle">Track and categorize your business expenses</p>
         </div>
-        <button id="add-expense-btn" className="btn-primary" onClick={openAdd}>
+        <button id="add-expense-btn" className="btn-primary w-full sm:w-auto justify-center" onClick={openAdd}>
           <Plus size={16} /> Add Expense
         </button>
       </div>
 
       {/* Summary Cards */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px', marginBottom: '28px' }}>
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-[16px] mb-[28px]">
         {[
           { label: 'Total Expenses', value: fmt(total), color: '#ef4444', icon: Receipt },
           { label: 'Fixed / Recurring', value: fmt(recurringTotal), sub: `${((recurringTotal / total) * 100).toFixed(0)}% of total`, color: '#f59e0b', icon: RefreshCw },
@@ -156,15 +156,14 @@ export default function ExpensesPage() {
       </div>
 
       {/* Filters */}
-      <div style={{ display: 'flex', gap: '12px', marginBottom: '20px', alignItems: 'center' }}>
-        <div style={{ position: 'relative', flex: 1, maxWidth: '320px' }}>
+      <div className="flex flex-col sm:flex-row gap-[12px] mb-[20px] sm:items-center">
+        <div className="relative flex-1 w-full sm:max-w-[320px]">
           <Search size={16} style={{ position: 'absolute', left: '14px', top: '50%', transform: 'translateY(-50%)', color: '#475569' }} />
           <input id="expense-search" className="form-input" style={{ paddingLeft: '40px' }} placeholder="Search expenses…" value={search} onChange={e => setSearch(e.target.value)} />
         </div>
         <select
           id="expense-category-filter"
-          className="form-input"
-          style={{ width: 'auto' }}
+          className="form-input w-full sm:w-auto"
           value={filterCategory}
           onChange={e => setFilterCategory(e.target.value as ExpenseCategory | 'All')}
         >
@@ -174,11 +173,12 @@ export default function ExpensesPage() {
       </div>
 
       {/* Table */}
-      <div className="card" style={{ overflow: 'hidden' }}>
+      <div className="card w-full overflow-x-auto">
         {loading ? (
           <div style={{ padding: '48px', textAlign: 'center', color: '#64748b' }}>Loading expenses…</div>
         ) : (
-          <table className="data-table">
+          <div className="min-w-[700px]">
+            <table className="data-table">
             <thead>
               <tr>
                 <th>Expense</th>
@@ -230,10 +230,11 @@ export default function ExpensesPage() {
                 </tr>
               ))}
               {filtered.length === 0 && (
-                <tr><td colSpan={6} style={{ textAlign: 'center', padding: '48px', color: '#475569' }}>No expenses found</td></tr>
+                <tr><td colSpan={6} className="text-center p-[48px] text-slate-700">No expenses found</td></tr>
               )}
             </tbody>
           </table>
+          </div>
         )}
       </div>
 
@@ -255,7 +256,7 @@ export default function ExpensesPage() {
                   {CATEGORIES.map(c => <option key={c} value={c}>{c}</option>)}
                 </select>
               </div>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-[12px]">
                 <div>
                   <label className="form-label">Amount ($) *</label>
                   <input id="expense-amount" className="form-input" type="number" step="0.01" min="0" required value={form.amount} onChange={e => setForm(f => ({ ...f, amount: e.target.value }))} placeholder="0.00" />

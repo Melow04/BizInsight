@@ -92,20 +92,20 @@ export default function ProductsPage() {
   const totalProfit = products.reduce((s, p) => s + (p.sellingPrice - p.unitCost) * p.unitsSold, 0);
 
   return (
-    <div style={{ padding: '36px 40px', maxWidth: '1300px', width: '100%' }}>
+    <div className="p-[20px] md:p-[36px_40px] max-w-[1300px] w-full mx-auto">
       {/* Header */}
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '32px' }}>
+      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-[16px] mb-[32px]">
         <div className="page-header" style={{ margin: 0 }}>
           <h1 className="page-title">Products</h1>
           <p className="page-subtitle">Manage your product catalog and track profitability</p>
         </div>
-        <button id="add-product-btn" className="btn-primary" onClick={openAdd}>
+        <button id="add-product-btn" className="btn-primary w-full sm:w-auto justify-center" onClick={openAdd}>
           <Plus size={16} /> Add Product
         </button>
       </div>
 
       {/* Summary Cards */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px', marginBottom: '28px' }}>
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-[16px] mb-[28px]">
         {[
           { label: 'Products Tracked', value: String(products.length), color: '#6366f1', icon: Package },
           { label: 'Total Revenue', value: fmt(totalRevenue), color: '#10b981', icon: TrendingUp },
@@ -124,7 +124,7 @@ export default function ProductsPage() {
       </div>
 
       {/* Search */}
-      <div style={{ position: 'relative', marginBottom: '20px', maxWidth: '360px' }}>
+      <div className="relative w-full sm:max-w-[360px] mb-[20px]">
         <Search size={16} style={{ position: 'absolute', left: '14px', top: '50%', transform: 'translateY(-50%)', color: '#475569' }} />
         <input
           id="product-search"
@@ -137,11 +137,11 @@ export default function ProductsPage() {
       </div>
 
       {/* Table */}
-      <div className="card" style={{ overflow: 'hidden' }}>
+      <div className="card w-full overflow-x-auto">
         {loading ? (
           <div style={{ padding: '48px', textAlign: 'center', color: '#64748b' }}>Loading products…</div>
         ) : (
-          <div style={{ overflowX: 'auto' }}>
+          <div className="min-w-[800px]">
             <table className="data-table">
               <thead>
                 <tr>
@@ -249,7 +249,7 @@ export default function ProductsPage() {
                   {CATEGORIES.map(c => <option key={c} value={c}>{c}</option>)}
                 </select>
               </div>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-[12px]">
                 <div>
                   <label className="form-label">Unit Cost ($) *</label>
                   <input id="product-cost" className="form-input" type="number" step="0.01" min="0" required value={form.unitCost} onChange={e => setForm(f => ({ ...f, unitCost: e.target.value }))} placeholder="0.00" />
@@ -259,7 +259,7 @@ export default function ProductsPage() {
                   <input id="product-price" className="form-input" type="number" step="0.01" min="0" required value={form.sellingPrice} onChange={e => setForm(f => ({ ...f, sellingPrice: e.target.value }))} placeholder="0.00" />
                 </div>
               </div>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-[12px]">
                 <div>
                   <label className="form-label">Units Sold</label>
                   <input id="product-units-sold" className="form-input" type="number" min="0" value={form.unitsSold} onChange={e => setForm(f => ({ ...f, unitsSold: e.target.value }))} placeholder="0" />

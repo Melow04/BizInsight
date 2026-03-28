@@ -73,46 +73,22 @@ export default function Sidebar() {
   const pathname = usePathname();
 
   return (
-    <aside style={{
-      width: '240px',
-      height: '100vh',
-      flexShrink: 0,
-      background: 'rgba(10,15,30,0.95)',
-      borderRight: '1px solid rgba(255,255,255,0.07)',
-      display: 'flex',
-      flexDirection: 'column',
-      padding: '20px 12px',
-      position: 'sticky',
-      top: 0,
-      overflow: 'hidden',
-      backdropFilter: 'blur(20px)',
-    }}>
+    <aside className="shrink-0 w-full md:w-[240px] h-auto md:h-screen bg-[rgba(10,15,30,0.95)] border-b md:border-b-0 md:border-r border-[rgba(255,255,255,0.07)] flex md:flex-col flex-row md:p-[20px_12px] p-[10px_16px] md:sticky top-0 z-50 backdrop-blur-[20px] overflow-x-auto md:overflow-hidden items-center md:items-stretch no-scrollbar">
       {/* Logo */}
-      <div style={{ padding: '8px 12px 24px', display: 'flex', alignItems: 'center', gap: '10px' }}>
+      <div className="flex items-center gap-[10px] md:pb-[24px] md:px-[12px] shrink-0 mr-6 md:mr-0">
         <div style={{ flexShrink: 0, filter: 'drop-shadow(0 0 6px rgba(99,102,241,0.6))' }}>
           <BizInsightLogo />
         </div>
-        <div style={{ flex: 1, minWidth: 0 }}>
+        <div className="hidden md:block flex-1 min-w-0">
           <div style={{ fontSize: '15px', fontWeight: 700, color: '#f1f5f9', letterSpacing: '-0.3px' }}>BizInsight</div>
           <div style={{ fontSize: '11px', color: '#475569', fontWeight: 500 }}>Decision Support</div>
         </div>
-        <span style={{
-          flexShrink: 0,
-          padding: '2px 7px',
-          background: 'rgba(99,102,241,0.18)',
-          border: '1px solid rgba(99,102,241,0.35)',
-          borderRadius: '6px',
-          fontSize: '9px',
-          fontWeight: 700,
-          color: '#818cf8',
-          letterSpacing: '0.08em',
-          textTransform: 'uppercase' as const,
-        }}>Demo</span>
+        <span className="hidden md:block shrink-0 px-[7px] py-[2px] bg-[rgba(99,102,241,0.18)] border border-[rgba(99,102,241,0.35)] rounded-[6px] text-[9px] font-bold text-[#818cf8] tracking-[0.08em] uppercase">Demo</span>
       </div>
 
       {/* Nav */}
-      <nav style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '2px' }}>
-        <div style={{ fontSize: '10px', fontWeight: 700, color: '#334155', textTransform: 'uppercase', letterSpacing: '0.1em', padding: '0 14px 8px' }}>
+      <nav className="flex-1 flex md:flex-col flex-row gap-[8px] md:gap-[2px] items-center md:items-stretch overflow-x-auto no-scrollbar md:pr-0 pr-4">
+        <div className="hidden md:block text-[10px] font-bold text-[#334155] uppercase tracking-[0.1em] px-[14px] pb-[8px]">
           Main Menu
         </div>
         {navItems.map(({ href, label, icon: Icon }) => {
@@ -121,38 +97,21 @@ export default function Sidebar() {
             <Link
               key={href}
               href={href}
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '10px',
-                padding: '10px 14px',
-                borderRadius: '8px',
-                fontSize: '14px',
-                fontWeight: 500,
-                color: isActive ? '#6366f1' : '#94a3b8',
-                textDecoration: 'none',
-                background: isActive ? 'rgba(99,102,241,0.12)' : 'transparent',
-                border: isActive ? '1px solid rgba(99,102,241,0.2)' : '1px solid transparent',
-                transition: 'all 0.15s ease',
-              }}
+              className={`flex items-center gap-[10px] px-[12px] py-[8px] md:px-[14px] md:py-[10px] rounded-[8px] text-[14px] font-medium transition-all duration-150 whitespace-nowrap ${
+                isActive
+                  ? 'text-[#6366f1] bg-[rgba(99,102,241,0.12)] border border-[rgba(99,102,241,0.2)]'
+                  : 'text-[#94a3b8] hover:text-[#f1f5f9] hover:bg-[rgba(255,255,255,0.04)] border border-transparent'
+              }`}
             >
               <Icon size={18} />
-              {label}
+              <span className="hidden md:inline">{label}</span>
             </Link>
           );
         })}
       </nav>
 
       {/* Footer */}
-      <div style={{
-        padding: '16px',
-        background: 'rgba(255,255,255,0.03)',
-        borderRadius: '12px',
-        border: '1px solid rgba(255,255,255,0.06)',
-        display: 'flex',
-        alignItems: 'center',
-        gap: '10px',
-      }}>
+      <div className="hidden md:flex p-[16px] bg-[rgba(255,255,255,0.03)] rounded-[12px] border border-[rgba(255,255,255,0.06)] items-center gap-[10px] mt-auto">
         <div style={{
           width: 32, height: 32,
           background: 'linear-gradient(135deg, #06b6d4, #6366f1)',

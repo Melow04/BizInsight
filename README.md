@@ -1,5 +1,7 @@
 # BizInsight Decision Support System
 
+🚀 **Live Demo:** [https://bizinsight-demo.vercel.app](https://bizinsight-demo.vercel.app)
+
 A premium, full-stack Next.js web application designed to help small businesses track sales, monitor expenses, and receive actionable, rule-based recommendations to improve profitability.
 
 ## Features

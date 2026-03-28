@@ -84,14 +84,14 @@ export default function RecommendationsPage() {
   };
 
   return (
-    <div style={{ padding: '36px 40px', maxWidth: '1000px', width: '100%' }}>
+    <div className="p-[20px] md:p-[36px_40px] max-w-[1000px] w-full mx-auto">
       {/* Header */}
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '8px' }}>
+      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-[16px] mb-[16px] md:mb-[8px]">
         <div>
           <h1 className="page-title">AI Recommendations</h1>
           <p className="page-subtitle">Rule-based insights to grow your business profitability</p>
         </div>
-        <button className="btn-secondary" onClick={handleRefresh} style={{ gap: '8px' }}>
+        <button className="btn-secondary w-full sm:w-auto justify-center" onClick={handleRefresh} style={{ gap: '8px' }}>
           <RefreshCw size={15} /> Refresh
         </button>
       </div>
@@ -111,7 +111,7 @@ export default function RecommendationsPage() {
       </div>
 
       {/* Stats */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '14px', marginBottom: '28px' }}>
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-[14px] mb-[28px]">
         {[
           { key: 'all', label: 'Total', color: '#94a3b8' },
           { key: 'high', label: 'High', color: '#ef4444' },
@@ -176,7 +176,7 @@ export default function RecommendationsPage() {
                 }}
               >
                 {/* Top row */}
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '14px' }}>
+                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-[12px] mb-[14px]">
                   <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                     <div style={{
                       width: 38, height: 38, borderRadius: '10px',
@@ -201,6 +201,7 @@ export default function RecommendationsPage() {
                   </div>
                   <button
                     onClick={() => setDismissed(d => new Set([...d, rec.id]))}
+                    className="w-full sm:w-auto mt-[8px] sm:mt-0"
                     style={{
                       padding: '5px 14px', background: 'rgba(255,255,255,0.05)',
                       border: '1px solid rgba(255,255,255,0.08)', borderRadius: '6px',
@@ -217,7 +218,7 @@ export default function RecommendationsPage() {
                 </p>
 
                 {/* Action + Impact */}
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-[12px]">
                   <div style={{
                     padding: '14px', background: 'rgba(255,255,255,0.03)',
                     border: '1px solid rgba(255,255,255,0.07)', borderRadius: '10px',

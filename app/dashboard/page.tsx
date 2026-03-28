@@ -120,7 +120,7 @@ export default function DashboardPage() {
   const top5Products = analytics.productProfits.slice(0, 5);
 
   return (
-    <div style={{ padding: '36px 40px', maxWidth: '1400px', width: '100%' }}>
+    <div className="p-[20px] md:p-[36px_40px] max-w-[1400px] w-full mx-auto">
       {/* Header */}
       <div className="page-header">
         <h1 className="page-title">Business Dashboard</h1>
@@ -128,7 +128,7 @@ export default function DashboardPage() {
       </div>
 
       {/* KPI Cards */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '20px', marginBottom: '32px' }}>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-[20px] mb-[32px]">
         <StatCard
           label="Total Revenue"
           value={fmtFull(analytics.totalRevenue)}
@@ -175,10 +175,10 @@ export default function DashboardPage() {
       )}
 
       {/* Charts Row 1 */}
-      <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '20px', marginBottom: '20px' }}>
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-[20px] mb-[20px]">
         {/* Revenue Trend */}
-        <div className="card" style={{ padding: '24px' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '24px' }}>
+        <div className="card lg:col-span-2 p-[20px] md:p-[24px]">
+          <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-[12px] mb-[24px]">
             <div>
               <div style={{ fontSize: '16px', fontWeight: 600, color: '#f1f5f9' }}>Revenue vs Expenses Trend</div>
               <div style={{ fontSize: '13px', color: '#64748b', marginTop: '2px' }}>Last 6 months</div>
@@ -219,7 +219,7 @@ export default function DashboardPage() {
         </div>
 
         {/* Revenue by Category Pie */}
-        <div className="card" style={{ padding: '24px' }}>
+        <div className="card lg:col-span-1 p-[20px] md:p-[24px]">
           <div style={{ fontSize: '16px', fontWeight: 600, color: '#f1f5f9', marginBottom: '4px' }}>Revenue by Category</div>
           <div style={{ fontSize: '13px', color: '#64748b', marginBottom: '20px' }}>Product mix breakdown</div>
           <ResponsiveContainer width="100%" height={180}>
@@ -258,9 +258,9 @@ export default function DashboardPage() {
       </div>
 
       {/* Charts Row 2 */}
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-[20px]">
         {/* Top Products by Profit */}
-        <div className="card" style={{ padding: '24px' }}>
+        <div className="card p-[20px] md:p-[24px]">
           <div style={{ fontSize: '16px', fontWeight: 600, color: '#f1f5f9', marginBottom: '4px' }}>Top Products by Profit</div>
           <div style={{ fontSize: '13px', color: '#64748b', marginBottom: '20px' }}>Gross profit contribution</div>
           <ResponsiveContainer width="100%" height={220}>
@@ -279,7 +279,7 @@ export default function DashboardPage() {
         </div>
 
         {/* Expenses Breakdown */}
-        <div className="card" style={{ padding: '24px' }}>
+        <div className="card p-[20px] md:p-[24px]">
           <div style={{ fontSize: '16px', fontWeight: 600, color: '#f1f5f9', marginBottom: '4px' }}>Expense Breakdown</div>
           <div style={{ fontSize: '13px', color: '#64748b', marginBottom: '20px' }}>Monthly expenses by category</div>
           <ResponsiveContainer width="100%" height={220}>
@@ -299,10 +299,13 @@ export default function DashboardPage() {
       </div>
 
       {/* Quick Insights */}
-      <div className="card" style={{ padding: '24px', marginTop: '20px', display: 'flex', gap: '24px', alignItems: 'center' }}>
-        <Lightbulb size={24} color="#6366f1" style={{ flexShrink: 0 }} />
+      <div className="card flex flex-col md:flex-row gap-[16px] md:gap-[24px] items-start md:items-center p-[20px] md:p-[24px] mt-[20px]">
+        <Lightbulb size={24} color="#6366f1" className="shrink-0 hidden md:block" />
         <div>
-          <div style={{ fontSize: '15px', fontWeight: 600, color: '#f1f5f9' }}>Quick Insight</div>
+          <div className="flex items-center gap-[8px]">
+            <Lightbulb size={18} color="#6366f1" className="shrink-0 md:hidden" />
+            <div style={{ fontSize: '15px', fontWeight: 600, color: '#f1f5f9' }}>Quick Insight</div>
+          </div>
           <div style={{ fontSize: '13px', color: '#94a3b8', marginTop: '4px' }}>
             Your gross margin is <strong style={{ color: '#6366f1' }}>{analytics.grossMargin.toFixed(1)}%</strong> and net margin is{' '}
             <strong style={{ color: analytics.netMargin >= 10 ? '#10b981' : '#f59e0b' }}>{analytics.netMargin.toFixed(1)}%</strong>.
@@ -313,12 +316,7 @@ export default function DashboardPage() {
         </div>
         <a
           href="/recommendations"
-          style={{
-            marginLeft: 'auto', flexShrink: 0,
-            padding: '10px 20px', background: 'linear-gradient(135deg, #6366f1, #8b5cf6)',
-            color: 'white', borderRadius: '8px', fontSize: '13px', fontWeight: 600,
-            textDecoration: 'none', whiteSpace: 'nowrap',
-          }}
+          className="md:ml-auto w-full md:w-auto text-center shrink-0 px-[20px] py-[10px] bg-gradient-to-br from-[#6366f1] to-[#8b5cf6] text-white rounded-[8px] text-[13px] font-semibold no-underline whitespace-nowrap"
         >
           View Recommendations
         </a>
