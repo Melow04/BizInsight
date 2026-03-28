@@ -131,7 +131,7 @@ export default function ExpensesPage() {
 
       {/* Category breakdown mini bars */}
       <div className="card" style={{ padding: '20px', marginBottom: '24px' }}>
-        <div style={{ fontSize: '14px', fontWeight: 600, color: '#94a3b8', marginBottom: '16px', textTransform: 'uppercase', letterSpacing: '0.06em', fontSize: '11px' }}>
+        <div style={{ fontWeight: 600, color: '#94a3b8', marginBottom: '16px', textTransform: 'uppercase', letterSpacing: '0.06em', fontSize: '11px' }}>
           Expense Distribution by Category
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
